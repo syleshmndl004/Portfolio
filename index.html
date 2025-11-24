@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sailesh - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Sailesh Mandal</div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#bio">SHORT BIO</a></li>
+             <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#interests">INTEREST</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <button id="theme-toggle">
+            <i class="fas fa-sun"></i>
+        </button>
+    </header>
+
+    <section class="bio-section" id="home">
+        <a id="bio"></a>
+        <div class="bio-content">
+            <h1>Hello, I'm</h1>
+            <h2>SAILESH MANDAL</h2>
+            <p> I'm a dedicated tech enthusiast and a Computer Science student
+                at Biratnagar International College. I enjoy coding, exploring
+                emerging technologies, and learning new tools. I'm especially
+                passionate about AI and Data Science, and I’m always eager to
+                grow in the ever-evolving world of tech. </p>
+            <div class="buttons">
+                <button>About me</button>
+                <button>Projects</button>
+            </div>
+        </div>
+        <div class="bio-image">
+            <img src="pfile.png" alt="Your Photo">
+        </div>
+    </section>
+
+    <section class="about-section" id="bio">
+        <h2>About Me:</h2>
+        <p>Hey, it's me Sailesh Mandal, a CS student at Biratnagar International College.</p>
+        <div class="buttons">
+            <button>Short Bio</button>
+        </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <div class="skill-name">HTML</div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-progress="90%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">CSS</div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-progress="85%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-progress="75%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">React</div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-progress="70%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interests-section" id="interests">
+        <h2>Interest & Hobbies:</h2>
+        <div class="interests-grid">
+            <div class="card programming">
+                <i class="fas fa-code fa-2x"></i>
+                <h3>Programming</h3>
+                <p>I enjoy coding and building software solutions to solve real-world problems.</p>
+            </div>
+
+            <div class="card webdev">
+                <i class="fas fa-laptop-code fa-2x"></i>
+                <h3>Web Development</h3>
+                <p>I love creating responsive and user-friendly websites.</p>
+            </div>
+
+            <div class="card ai">
+                <i class="fas fa-robot fa-2x"></i>
+                <h3>AI & Machine Learning</h3>
+                <p>Exploring AI technologies and their applications fascinates me.</p>
+            </div>
+
+            <div class="card gaming">
+                <i class="fas fa-gamepad fa-2x"></i>
+                <h3>Gaming</h3>
+                <p>I enjoy playing video games and analyzing their design.</p>
+            </div>
+
+            <div class="card design">
+                <i class="fas fa-paint-brush fa-2x"></i>
+                <h3>Graphic Design</h3>
+                <p>I like experimenting with design tools to create visuals.</p>
+            </div>
+
+            <div class="card blogging">
+                <i class="fas fa-pen-nib fa-2x"></i>
+                <h3>Tech Blogging</h3>
+                <p>I enjoy writing about the latest tech trends and innovations.</p>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="projects-section">
+        <h2>Featured projects:</h2>
+        <div class="project-grid">
+            <div class="project-card" data-url="https://github.com/syleshmndl004/project1">
+                <img src="project1.jpg" alt="Project 1">
+                <p>Project 1</p>
+                <button>View Live</button>
+                <button>GitHub Repo</button>
+            </div>
+            <div class="project-card" data-url="https://github.com/syleshmndl004/project2">
+                <img src="project2.jpg" alt="Project 2">
+                <p>Project 2</p>
+                <button>View Live</button>
+                <button>GitHub Repo</button>
+            </div>
+            <div class="project-card" data-url="https://github.com/syleshmndl004/project3">
+                <img src="project3.jpg" alt="Project 3">
+                <p>Project 3</p>
+                <button>View Live</button>
+                <button>GitHub Repo</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="media-section" class="media-section">
+        <h2>Media Showcase</h2>
+        <div class="media-container">
+            <div>
+                <h3>Intro Video</h3>
+                <video controls width="300">
+                    <source src="video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div>
+                <h3>Sample Audio</h3>
+                <audio controls>
+                    <source src="audio.mp3" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+            </div>
+            <div>
+                <h3>Canvas Art</h3>
+                <canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="slider-section">
+        <h2>Image Slider</h2>
+        <div class="slider">
+            <div class="slides">
+                <img src="1.jpg" alt="Image 1" class="slide">
+                <img src="2.jpg" alt="Image 2" class="slide">
+                <img src="3.jpg" alt="Image 3" class="slide">
+            </div>
+            <button class="slider-btn prev-btn">&lt;</button>
+            <button class="slider-btn next-btn">&gt;</button>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+
+        <div class="contact-left">
+            <h2>Connect with me:</h2>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/yourprofile" target="_blank">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+                <a href="https://www.instagram.com/__saelesh__/" target="_blank">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sailesh-mandal-500426247" target="_blank">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                 <a href="https://github.com/syleshmndl004" target="_blank">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="contact-right">
+            <h2>Contact me, let’s make magic together</h2>
+            <form id="contact-form" action="form-details.html" method="GET">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <textarea id="message" name="message" placeholder="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <div id="form-status"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Sailesh Mandal. All rights reserved.</p>
+    </footer>
+
+    <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

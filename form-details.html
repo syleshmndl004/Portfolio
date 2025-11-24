@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Details</title>
+    <link rel="stylesheet" href="form-details.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You!</h1>
+        <p>Your message has been received. Here are the details:</p>
+        <div class="details">
+            <p><strong>Name:</strong> <span id="displayName"></span></p>
+            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+            <p><strong>Message:</strong></p>
+            <p id="displayMessage"></p>
+        </div>
+        <a href="index.html" class="back-link">Go Back to Portfolio</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve data from localStorage
+            const name = localStorage.getItem('formName');
+            const email = localStorage.getItem('formEmail');
+            const message = localStorage.getItem('formMessage');
+
+            // Display the data
+            document.getElementById('displayName').textContent = name || 'N/A';
+            document.getElementById('displayEmail').textContent = email || 'N/A';
+            document.getElementById('displayMessage').textContent = message || 'N/A';
+
+            // Optional: Clear the data from localStorage after displaying it
+            // localStorage.removeItem('formName');
+            // localStorage.removeItem('formEmail');
+            // localStorage.removeItem('formMessage');
+        });
+    </script>
+</body>
+</html>
