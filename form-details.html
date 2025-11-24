@@ -9,32 +9,51 @@
 <body>
     <div class="container">
         <h1>Thank You!</h1>
-        <p>Your message has been received. Here are the details:</p>
-        <div class="details">
-            <p><strong>Name:</strong> <span id="displayName"></span></p>
-            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
-            <p><strong>Message:</strong></p>
-            <p id="displayMessage"></p>
+        <p>Your most recent message has been received:</p>
+        <div class="details" id="latest-submission">
+            <!-- Most recent submission will be shown here -->
+        </div>
+        <hr>
+        <h2>Past Submissions</h2>
+        <div id="all-submissions">
+            <!-- All submissions will be listed here -->
         </div>
         <a href="index.html" class="back-link">Go Back to Portfolio</a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Retrieve data from localStorage
-            const name = localStorage.getItem('formName');
-            const email = localStorage.getItem('formEmail');
-            const message = localStorage.getItem('formMessage');
+            const submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+            const latestSubmissionContainer = document.getElementById('latest-submission');
+            const allSubmissionsContainer = document.getElementById('all-submissions');
 
-            // Display the data
-            document.getElementById('displayName').textContent = name || 'N/A';
-            document.getElementById('displayEmail').textContent = email || 'N/A';
-            document.getElementById('displayMessage').textContent = message || 'N/A';
+            if (submissions.length > 0) {
+                // Display the most recent submission
+                const latest = submissions[submissions.length - 1];
+                latestSubmissionContainer.innerHTML = `
+                    <p><strong>Name:</strong> ${latest.name}</p>
+                    <p><strong>Email:</strong> ${latest.email}</p>
+                    <p><strong>Message:</strong></p>
+                    <p>${latest.message}</p>
+                    <p><small>Received on: ${new Date(latest.date).toLocaleString()}</small></p>
+                `;
 
-            // Optional: Clear the data from localStorage after displaying it
-            // localStorage.removeItem('formName');
-            // localStorage.removeItem('formEmail');
-            // localStorage.removeItem('formMessage');
+                // Display all past submissions
+                submissions.reverse().forEach(sub => {
+                    const entry = document.createElement('div');
+                    entry.classList.add('details');
+                    entry.innerHTML = `
+                        <p><strong>Name:</strong> ${sub.name}</p>
+                        <p><strong>Email:</strong> ${sub.email}</p>
+                        <p><strong>Message:</strong> ${sub.message}</p>
+                        <p><small>Received on: ${new Date(sub.date).toLocaleString()}</small></p>
+                    `;
+                    allSubmissionsContainer.appendChild(entry);
+                });
+
+            } else {
+                latestSubmissionContainer.innerHTML = "<p>No submission data found.</p>";
+            }
         });
     </script>
 </body>

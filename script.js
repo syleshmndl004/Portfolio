@@ -50,10 +50,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const message = document.querySelector('#message').value.trim();
 
             if (name && email && message) {
-                // Store data in localStorage
-                localStorage.setItem('formName', name);
-                localStorage.setItem('formEmail', email);
-                localStorage.setItem('formMessage', message);
+                const newSubmission = { name, email, message, date: new Date().toISOString() };
+
+                // Get existing submissions from localStorage, or create a new array
+                let submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+                
+                // Add the new submission to the array
+                submissions.push(newSubmission);
+                
+                // Save the updated array back to localStorage
+                localStorage.setItem('formSubmissions', JSON.stringify(submissions));
 
                 // Redirect to the details page
                 window.location.href = 'form-details.html';
