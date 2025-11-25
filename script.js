@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
     const themeIcon = themeToggle.querySelector('i');
 
-    // Check for saved theme in localStorage
+    // saves in localStorage
     if (localStorage.getItem('theme') === 'dark') {
         body.classList.add('dark-mode');
         themeIcon.classList.replace('fa-sun', 'fa-moon');
@@ -85,11 +85,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const canvas = document.getElementById('myCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#a17cff';
-        ctx.fillRect(10, 10, 150, 80);
-    }
-
-    // --- Image Slider ---
+        const img = new Image();
+        img.onload = function() {
+            // Draw the image, scaling it to fit the canvas
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+        img.src = 'images/canvas-art.jpeg'; // Path to your new image
+    }    // --- Image Slider ---
     const slides = document.querySelector('.slides');
     if (slides) {
         const slideImages = document.querySelectorAll('.slide');
