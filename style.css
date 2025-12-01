@@ -53,7 +53,6 @@ body.dark-mode header {
     list-style: none;
     display: flex;
     gap: 20px;
-    margin-left: 500px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -91,8 +90,11 @@ body.dark-mode #theme-toggle:hover {
     color: #fff;
 }
 
-.hr {
-    display: none;
+.nav-toggle {
+    display: none; /* Hidden by default */
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #a17cff;
 }
 
 /* Hero / Bio Section */
@@ -102,7 +104,7 @@ body.dark-mode #theme-toggle:hover {
     justify-content: space-between;
     background-color: #f4f4f9;
     flex-wrap: wrap;
-    padding: 80px 8% 80px 0%;
+    padding: 80px 8%;
     transition: background-color 0.3s;
 }
 
@@ -112,7 +114,6 @@ body.dark-mode .bio-section {
 
 .bio-content {
     max-width: 600px;
-    margin-left: -190px;
 }
 
 .bio-content h1, .bio-content h2 {
@@ -162,6 +163,74 @@ body.dark-mode .bio-content h1, body.dark-mode .bio-content h2 {
     border-radius: 10px;
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode .nav-links {
+        background: #1a1a1a;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    .bio-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 5%;
+    }
+
+    .bio-content {
+        margin-left: 0;
+        order: 2; /* Text comes after image */
+    }
+
+    .bio-image {
+        order: 1; /* Image comes first */
+        margin-bottom: 30px;
+    }
+
+    .bio-content h1, .bio-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .projects-section, .media-section, .slider-section, .contact-section {
+        padding: 40px 5%;
+    }
+
+    .projects-section h2, .project-grid {
+        margin-left: 0;
+    }
+
+    .contact-section {
+        flex-direction: column;
+    }
+}
+
 /* About Section */
 .about-section {
     padding: 60px 5%;
@@ -195,7 +264,7 @@ body.dark-mode .education-section {
 }
 
 table {
-    width: 100.11%;
+    width: 100%;
     border-collapse: collapse;
     background-color: #fff;
 }
