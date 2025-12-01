@@ -91,6 +91,13 @@ body.dark-mode #theme-toggle:hover {
     color: #fff;
 }
 
+.nav-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #a17cff;
+}
+
 .hr {
     display: none;
 }
@@ -160,6 +167,44 @@ body.dark-mode .bio-content h1, body.dark-mode .bio-content h2 {
 .bio-image img {
     max-width: 300px;
     border-radius: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode .nav-links {
+        background: #1a1a1a;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .bio-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .bio-content {
+        margin-left: 0;
+    }
 }
 
 /* About Section */
