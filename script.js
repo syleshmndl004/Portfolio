@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Draw the image, scaling it to fit the canvas
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         };
-        img.src = 'canvas-art.jpeg'; // Path to your new image
+        img.src = 'Files/canvas-art.jpeg'; // Path to your new image
     }
     
     // --- Image Slider ---
@@ -132,15 +132,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Mobile Menu Toggle (existing functionality)
+    // Mobile Menu Toggle
+    const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const header = document.querySelector('header');
-    if (!header.querySelector('.nav-toggle')) {
-        const navToggle = document.createElement('div');
-        navToggle.classList.add('nav-toggle');
-        navToggle.innerHTML = `<i class="fas fa-bars"></i>`;
-        header.appendChild(navToggle);
 
+    if (navToggle) {
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
