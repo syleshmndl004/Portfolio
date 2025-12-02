@@ -505,6 +505,37 @@ body.dark-mode .media-section {
     gap: 20px;
 }
 
+.canvas-controls {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.canvas-controls label {
+    font-size: 0.9rem;
+}
+
+.canvas-controls input[type="color"] {
+    border: 1px solid #ccc;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.canvas-controls button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+body.dark-mode .canvas-controls button {
+    background-color: #333;
+    border-color: #555;
+    color: #fff;
+}
+
 /* Image Slider Section */
 .slider-section {
     padding: 60px 10%;

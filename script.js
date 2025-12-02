@@ -81,16 +81,109 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // --- Canvas Drawing ---
+    // --- Interactive Whiteboard ---
     const canvas = document.getElementById('myCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        const img = new Image();
-        img.onload = function() {
-            // Draw the image, scaling it to fit the canvas
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        };
-        img.src = 'Files/canvas-art.jpeg'; // Path to your new image
+        const colorPicker = document.getElementById('colorPicker');
+        const eraserBtn = document.getElementById('eraserBtn');
+        const clearBtn = document.getElementById('clearBtn');
+
+        let isDrawing = false;
+        let isErasing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // Set canvas background to white
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            
+            if (isErasing) {
+                ctx.strokeStyle = 'white'; // Eraser color
+                ctx.lineWidth = 20; // Eraser size
+            } else {
+                ctx.strokeStyle = colorPicker.value;
+                ctx.lineWidth = 5; // Brush size
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            // Adjust for canvas offset
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            [lastX, lastY] = [x, y];
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            [lastX, lastY] = [e.clientX - rect.left, e.clientY - rect.top];
+        });
+
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+
+        // Touch events for mobile
+        canvas.addEventListener('touchstart', (e) => {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            [lastX, lastY] = [touch.clientX - rect.left, touch.clientY - rect.top];
+            e.preventDefault();
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+            
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+
+            if (isErasing) {
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 20;
+            } else {
+                ctx.strokeStyle = colorPicker.value;
+                ctx.lineWidth = 5;
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            [lastX, lastY] = [x, y];
+            e.preventDefault();
+        });
+
+        canvas.addEventListener('touchend', () => isDrawing = false);
+
+        eraserBtn.addEventListener('click', () => {
+            isErasing = !isErasing;
+            eraserBtn.textContent = isErasing ? 'Brush' : 'Eraser';
+        });
+
+        clearBtn.addEventListener('click', () => {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        });
+
+        colorPicker.addEventListener('change', () => {
+            isErasing = false;
+            eraserBtn.textContent = 'Eraser';
+        });
     }
     
     // --- Image Slider ---
